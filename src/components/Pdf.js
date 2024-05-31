@@ -17,7 +17,7 @@ const Pdf = (props) => {
     const displayedText = truncateText(props.text, 200)
 
     return (
-        <Container className='pdf'>
+        <Container className='pdf hover-grow'>
             <Row>
                 <Col lg={5}>
                     <h1 className="pdf-filename">{props.filename}</h1>
