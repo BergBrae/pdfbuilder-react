@@ -1,23 +1,18 @@
 import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Context } from './components/Context';
+import initialdata from './data/extractions.pdfbuilder.json';
 
 function App() {
+  const [data, setData] = useState(initialdata);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Context.Provider value={{data, setData}}>
+        <h1>PDFBuilder</h1>
+      </Context.Provider>
     </div>
   );
 }
