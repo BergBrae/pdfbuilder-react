@@ -15,9 +15,7 @@
                 "path": "F:\\data\\Benchsheets\\extractions\\PCB-Pest Liquid.REV8.180410.pdf",
                 "directory": "F:\\data\\Benchsheets\\extractions",
                 "num_pages": 1,
-                "text": [
-                    "MeCl 2_____________________ Analyst: _________________\nHexane____________________ Date ____________________\nNa2SO 4 ___________________ Time Started _____________\nH2SO 4____________________ Time Ended ______________\nSSD# _____________________ Ether/Hexane__________________ Prep Batch ID#____________\nPCB MS ID#_____________ Pest MS ID#______________\n# Merit #\nMatrixSample Vol \n(ml)SolventSolvent \nVol (ml)Final Vol \n(ml)SSD Vol \n(ml)MS Vol \n(ml)pH\nTurbo \nVap IDSep \nFunnel IDNotes\nBLANK D.I. MeCl 2/Hex 180 1 1\nLCS D.I. 1\nLCSD D.I. 1\nMS  \uf0a8 \uf0a8\nMSD  \uf0a8 \uf0a8\n1  \uf0a8 \uf0a8\n2  \uf0a8 \uf0a8\n3  \uf0a8 \uf0a8\n4  \uf0a8 \uf0a8\n5  \uf0a8 \uf0a8\n6  \uf0a8 \uf0a8\n7  \uf0a8 \uf0a8\n8  \uf0a8 \uf0a8\n9  \uf0a8 \uf0a8\n10  \uf0a8 \uf0a8\n11  \uf0a8 \uf0a8\n12  \uf0a8 \uf0a8\n13  \uf0a8 \uf0a8\n14  \uf0a8 \uf0a8\n15  \uf0a8 \uf0a8\n16  \uf0a8 \uf0a8\n17  \uf0a8 \uf0a8\n18  \uf0a8 \uf0a8\n19  \uf0a8 \uf0a8\n20  \uf0a8 \uf0a8\nReviewed by: ___________ On: ____________ Prepared by: Merit Laboratories, Inc.\nEffective Date 2/5/2014 EXT-F01Dioxin CleanupPCB/Pesticide Extraction\nMethod 3510CInitial Q.C.\nAlumina Cleanup"
-                ]
+                "text": null
             },
             {
                 "filename": "PNA.DRO.Liquid.190314.pdf",

@@ -24,16 +24,15 @@ const Pdf = (props) => {
                     <p className="pdf-directory">{props.directory}</p>
                     {props.num_pages != null && <p><span className="num-pages-label">Number of Pages: </span><span className="num-pages">{props.num_pages}</span></p>}
                 </Col>
-                <Col lg={5} className="d-flex align-items-center justify-content-center">
+                <Col lg={6} className="d-flex align-items-center justify-content-center">
                     {displayedText && <p className="pdf-truncated-text pdf-textbox">{displayedText}</p>}
                 </Col>
-                <Col lg={2} className="d-flex align-items-center justify-content-center">
+                <Col lg={1} className="d-flex align-items-center justify-content-center">
                     <Button variant="primary" onClick={() => console.log("hello")}>Open</Button>
                 </Col>
             </Row>
         </Container >
     );
-
 }
 
 export default Pdf;

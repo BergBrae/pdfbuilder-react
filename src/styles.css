@@ -16,11 +16,9 @@
 
 .pdf-textbox {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin: 10px;
-    border-radius: 7px;
+    padding: 20px;
+    border-radius: 10px;
     text-align: left;
-    display: flex;
 }
 
 .App {
