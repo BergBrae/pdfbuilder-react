@@ -11,18 +11,20 @@ import Context from './components/Context';
 import initialdata from './data/extractions.pdfbuilder.json';
 import Pdf from './components/Pdf';
 import Pdfs from './components/Pdfs';
+import Sortkey from './components/Sortkey';
 
 function App() {
   const [data, setData] = useState(initialdata);
 
 
   return (
-    <div className="App">
+    <div className="App theme-dark">
       <Context.Provider value={[data, setData]}>
         <Router>
           <Navbar />
           <Routes>
             <Route path="/" element={<Pdfs />} />
+            <Route path="/sortkey" element={<Sortkey />} />
           </Routes>
         </Router>
       </Context.Provider>
