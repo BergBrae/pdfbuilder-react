@@ -12,6 +12,7 @@ import initialdata from './data/extractions.pdfbuilder.json';
 import Pdf from './components/Pdf';
 import Pdfs from './components/Pdfs';
 import Sortkey from './components/Sortkey';
+import Home from './components/Home';
 
 function App() {
   const [data, setData] = useState(initialdata);
@@ -23,7 +24,8 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Pdfs />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/pdfs" element={<Pdfs />} />
             <Route path="/sortkey" element={<Sortkey />} />
           </Routes>
         </Router>

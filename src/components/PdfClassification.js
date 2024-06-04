@@ -35,7 +35,7 @@ export default function PdfClassification(props) {
         <Form className='mb-5 rounded border'>
             <Row className="m-3">
                 <Col lg={1} className="text-align-center align-content-center">
-                    <h2 className='m-2'>{props.index}</h2>
+                    <h4 className='m-2'>{props.index}</h4>
                 </Col>
                 <Col lg={3} className="text-align-center align-content-center">
                     <InformativeInput placeholder="Classification Name" information={nameInforamtion} value={props.name} />

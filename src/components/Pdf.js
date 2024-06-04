@@ -2,20 +2,29 @@ import React from 'react';
 import { Container, Row, Col, Button, Alert } from 'react-bootstrap';
 // import { Document, Page } from 'react-pdf';
 import Accordion from 'react-bootstrap/Accordion';
-import { BiColumns } from 'react-icons/bi';
+import { CiBookmark } from "react-icons/ci";
 
 const Pdf = (props) => {
 
     const text = props.text ? props.text : <Alert variant="danger">No content available for this file</Alert>; // default to an empty string if props.text is null or undefined
     const showButton = props.text ? true : false;
 
+    const bookmarkElement = props.bookmark.length ? <span><CiBookmark size={30} /> {props.bookmark}</span> : <span></span>;
+
     return (
         <Accordion.Item eventKey={props.eventKey}>
             <Accordion.Header>
-                <Col >
-                    <h1 className="pdf-filename">{props.filename}</h1>
-                    <p className="pdf-directory">{props.directory}</p>
-                </Col>
+                <Container>
+                    <Row>
+                        <Col md={7}>
+                            <h3 className="pdf-filename">{props.filename}</h3>
+                            <p className="pdf-directory">{props.directory}</p>
+                        </Col>
+                        <Col md={5}>
+                            {bookmarkElement}
+                        </Col>
+                    </Row>
+                </Container>
             </Accordion.Header>
             <Accordion.Body>
                 <Row>

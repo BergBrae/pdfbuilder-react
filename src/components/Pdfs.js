@@ -15,16 +15,16 @@ export default function Pdfs() {
             path={pdf.path}
             directory={pdf.directory}
             text={text}
-            num_pages={pdf.num_pages}
+
+            numPages={pdf.num_pages}
+            bookmark={"test"}
         />
     });
 
     return (
         <Container md={6}>
             <title>PDF Builder</title>
-            <Container>
-                <h1>PDFs</h1>
-            </Container>
+            <h1 className='m-5'>PDFs</h1>
             <Accordion>
                 {pdfs}
             </Accordion>

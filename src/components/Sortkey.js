@@ -20,7 +20,7 @@ export default function SortKey(props) {
 
     return (
         <Container>
-            <h1>Sort Key</h1>
+            <h1 className="m-5">Sort Key</h1>
             {sort_key}
             <Button variant="primary">Add Classification</Button>
         </Container>
