@@ -9,7 +9,7 @@ const Pdf = (props) => {
     const text = props.text ? props.text : <Alert variant="danger">No content available for this file</Alert>; // default to an empty string if props.text is null or undefined
     const showButton = props.text ? true : false;
 
-    const bookmarkElement = props.bookmark.length ? <span><CiBookmark size={30} /> {props.bookmark}</span> : <span></span>;
+    const bookmarkElement = props.bookmark ? <span><CiBookmark size={30} /> {props.bookmark}</span> : <span></span>;
 
     return (
         <Accordion.Item eventKey={props.eventKey}>
