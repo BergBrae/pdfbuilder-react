@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import PdfClassification from './PdfClassification';
-import Context from './Context';
+import { DataContext } from './context';
 
 export default function SortKey(props) {
-    const [data, setData] = React.useContext(Context);
+    const [data, setData] = React.useContext(DataContext);
 
     const handleAddClassification = () => {
         const newClassification = {
@@ -22,7 +22,7 @@ export default function SortKey(props) {
     };
 
     const handleUpdateClassification = (index, updatedClassification) => {
-        const updatedSortKey = data.sort_key.map((classification, idx) => 
+        const updatedSortKey = data.sort_key.map((classification, idx) =>
             idx === index ? updatedClassification : classification
         );
         setData(prevData => ({

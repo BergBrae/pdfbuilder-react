@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,20 +6,16 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar"
 import './App.css';
-import Context from './components/Context';
-import initialdata from './data/extractions.pdfbuilder.json';
+import { DataProvider } from './components/context';
 import Pdf from './components/Pdf';
 import Pdfs from './components/Pdfs';
 import Sortkey from './components/Sortkey';
 import Home from './components/Home';
 
 function App() {
-  const [data, setData] = useState(initialdata);
-
-
   return (
     <div className="App theme-dark">
-      <Context.Provider value={[data, setData]}>
+      <DataProvider>
         <Router>
           <Navbar />
           <Routes>
@@ -29,7 +24,7 @@ function App() {
             <Route path="/sortkey" element={<Sortkey />} />
           </Routes>
         </Router>
-      </Context.Provider>
+      </DataProvider>
     </div>
   );
 }

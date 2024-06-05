@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import Context from './Context';
+import { DataContext } from './context';
 import Pdf from './Pdf';
 import { Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 
 export default function Pdfs() {
-    const [data, setData] = useContext(Context);
+    const [data, setData] = useContext(DataContext);
 
     const pdfs = data.pdfs.files.map((pdf, index) => {
         const text = pdf.text ? pdf.text.join("\n\n") : ""; // default to an empty string if pdf.text is null or undefined
