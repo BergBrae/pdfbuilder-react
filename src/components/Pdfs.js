@@ -21,10 +21,13 @@ export default function Pdfs() {
         />
     });
 
+
+
     return (
         <Container md={6}>
             <title>PDF Builder</title>
             <h1 className='m-5'>PDFs</h1>
+            {pdfs.length == 0 ? <p>No Current files. Please add a file to continue</p> : ""}
             <Accordion>
                 {pdfs}
             </Accordion>
