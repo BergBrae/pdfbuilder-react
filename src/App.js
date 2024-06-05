@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App theme-dark">
       <DataProvider>
-        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
+        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3 sticky-top bg-white">
           <Tab eventKey="home" title="Home">
             <Home />
           </Tab>
