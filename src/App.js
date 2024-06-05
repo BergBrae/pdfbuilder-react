@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
-import Navbar from "./components/Navbar"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Tabs, Tab } from 'react-bootstrap';
 import './App.css';
 import { DataProvider } from './components/context';
 import Pdf from './components/Pdf';
@@ -16,14 +12,17 @@ function App() {
   return (
     <div className="App theme-dark">
       <DataProvider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/pdfs" element={<Pdfs />} />
-            <Route path="/sortkey" element={<Sortkey />} />
-          </Routes>
-        </Router>
+        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
+          <Tab eventKey="home" title="Home">
+            <Home />
+          </Tab>
+          <Tab eventKey="pdfs" title="PDFs">
+            <Pdfs />
+          </Tab>
+          <Tab eventKey="sortkey" title="Sort Key">
+            <Sortkey />
+          </Tab>
+        </Tabs>
       </DataProvider>
     </div>
   );

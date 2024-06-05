@@ -11,9 +11,9 @@ export default function SortKey(props) {
             name: "",
             regex: "",
             bookmark: "",
-            applies_to_filename: false,
-            applies_to_directory: false,
-            applies_to_document: false
+            applies_to_filename: true,
+            applies_to_directory: true,
+            applies_to_document: true
         };
         setData(prevData => ({
             ...prevData,
