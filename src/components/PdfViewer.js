@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
@@ -11,13 +11,34 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 export default function PdfViewer(Props) {
     const { fileData, numPages, onDocumentLoadSuccess } = Props;
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const handleWheel = (e) => {
+            e.preventDefault();
+            if (containerRef.current) {
+                containerRef.current.scrollLeft += e.deltaY;
+            }
+        };
+
+        const container = containerRef.current;
+        if (container) {
+            container.addEventListener('wheel', handleWheel);
+        }
+
+        return () => {
+            if (container) {
+                container.removeEventListener('wheel', handleWheel);
+            }
+        };
+    }, []);
 
     return (
         <Container>
             <Row>
                 <Col>
                     {fileData && (
-                        <div style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
+                        <div ref={containerRef} style={{ overflowX: 'scroll', whiteSpace: 'nowrap' }}>
                             <Document
                                 file={fileData}
                                 onLoadSuccess={onDocumentLoadSuccess}
