@@ -2,24 +2,10 @@ import React from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import PdfClassification from './PdfClassification';
 import { DataContext } from './context';
+import AddClassificationButton from "./AddClassificationButton";
 
 export default function SortKey(props) {
     const [data, setData] = React.useContext(DataContext);
-
-    const handleAddClassification = () => {
-        const newClassification = {
-            name: "",
-            regex: "",
-            bookmark: "",
-            applies_to_filename: true,
-            applies_to_directory: true,
-            applies_to_document: true
-        };
-        setData(prevData => ({
-            ...prevData,
-            sort_key: [...prevData.sort_key, newClassification]
-        }));
-    };
 
     const handleUpdateClassification = (index, updatedClassification) => {
         const updatedSortKey = data.sort_key.map((classification, idx) =>
@@ -57,10 +43,14 @@ export default function SortKey(props) {
         <Container>
             <h1 className="m-5">Sort Key</h1>
             <section>
-                {sort_key.length === 0 ? <p>Please add a classification to continue.</p> : ""}
+                {sort_key.length === 0 ?
+                    <>
+                        <p>Please add a classification to continue.</p>
+                        <AddClassificationButton />
+                    </>
+                    : ""}
                 {sort_key}
             </section>
-            <Button variant="primary" onClick={handleAddClassification}>Add Classification</Button>
         </Container>
     );
 }

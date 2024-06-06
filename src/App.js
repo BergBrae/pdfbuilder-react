@@ -11,6 +11,7 @@ import Pdfs from './components/Pdfs';
 import Sortkey from './components/Sortkey';
 import Home from './components/Home';
 import Pdftools from './components/Pdftools';
+import SortKeyTools from './components/SortKeyTools';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               </Nav>
               <hr className='m-4 mt-2 mb-5'/>
               <Tab.Pane eventKey="PDFs" style={{bottom: 0}}><Pdftools /></Tab.Pane>
+              <Tab.Pane eventKey="sort_key" style={{bottom: 0}}><SortKeyTools /></Tab.Pane>
             </Col>
             <Col sm={10} className="content">
               <Tab.Content>

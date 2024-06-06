@@ -1,16 +1,14 @@
 import React from 'react';
 import { Col, Row, Container, Button, FormControl } from 'react-bootstrap';
 import { DataContext } from './context';
-import AddFileButton from './AddFileButton';
+import AddClassificationButton from './AddClassificationButton';
 
-export default function Pdftools() {
-    const [data, setData] = React.useContext(DataContext);
-
+export default function SortKeyTools() {
     return (
         <Container>
             <Row className='align-items-center'>
                 <Col>
-                    <AddFileButton />
+                    <AddClassificationButton />
                 </Col>
             </Row>
         </Container>
