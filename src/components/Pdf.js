@@ -5,7 +5,10 @@ import Accordion from 'react-bootstrap/Accordion';
 import { CiBookmark } from "react-icons/ci";
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.mjs',
+    import.meta.url,
+  ).toString();
 
 const Pdf = (props) => {
     const { index, pdf, bookmarks, eventKey } = props;
