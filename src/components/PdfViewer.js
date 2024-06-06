@@ -10,30 +10,35 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     import.meta.url,
 ).toString();
 
-
 export default function PdfViewer(Props) {
     const { fileData, numPages, onDocumentLoadSuccess } = Props;
 
     return (
-        <Container className='border pdf-viewer'>
+        <Container>
             <Row>
                 <Col>
                     {fileData && (
-                        <Document
-                            file={fileData}
-                            onLoadSuccess={onDocumentLoadSuccess}
-                        >
-                            {Array.from(
-                                new Array(numPages),
-                                (el, index) => (
-                                    <Page
-                                        key={`page_${index + 1}`}
-                                        pageNumber={index + 1}
-                                        className="border"
-                                    />
-                                )
-                            )}
-                        </Document>
+                        <div style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
+                            <Document
+                                file={fileData}
+                                onLoadSuccess={onDocumentLoadSuccess}
+                                className='d-flex flex-row'
+                            >
+                                {Array.from(
+                                    new Array(numPages),
+                                    (el, index) => (
+                                        <div key={`page_${index + 1}`} style={{ display: 'inline-block', margin: '0 10px' }}>
+                                            <Page
+                                                pageNumber={index + 1}
+                                                renderTextLayer={false}
+                                                renderAnnotationLayer={false}
+                                                className="border"
+                                            />
+                                        </div>
+                                    )
+                                )}
+                            </Document>
+                        </div>
                     )}
                 </Col>
             </Row>
