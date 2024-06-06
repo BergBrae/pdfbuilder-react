@@ -19,7 +19,7 @@ function App() {
         <Tab.Container id="left-tabs" defaultActiveKey="PDFs">
           <Row>
             <Col sm={2} className="sidebar p-0 m-0">
-              <h1>PDFBuilder</h1>
+              <h1 className='m-2 mb-0'>PDFBuilder</h1>
               <Nav variant="pills" className="flex-column" style={{width: "100%"}}>
                 <Nav.Item className='m-2 mb-0'>
                   <Nav.Link eventKey="PDFs">PDFs</Nav.Link>
