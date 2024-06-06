@@ -3,6 +3,7 @@ import { DataContext } from './context';
 import Pdf from './Pdf';
 import { Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
+import AddFileButton from './AddFileButton';
 
 export default function Pdfs() {
     const [data, setData] = useContext(DataContext);
@@ -15,7 +16,12 @@ export default function Pdfs() {
             return <Pdf index={index} pdf={pdf} bookmarks={bookmarks} />
         });
     } else {
-        pdfs = <p>Add files to begin.</p>
+        pdfs = (
+            <Container>
+                <p>Add files to begin.</p>
+                <AddFileButton />
+            </Container>
+        );
     }
 
 

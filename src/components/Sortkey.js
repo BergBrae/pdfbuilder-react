@@ -57,7 +57,7 @@ export default function SortKey(props) {
         <Container>
             <h1 className="m-5">Sort Key</h1>
             <section>
-                {sort_key.length === 0 ? <p>No current classifications. Please add a classification to continue.</p> : ""}
+                {sort_key.length === 0 ? <p>Please add a classification to continue.</p> : ""}
                 {sort_key}
             </section>
             <Button variant="primary" onClick={handleAddClassification}>Add Classification</Button>
