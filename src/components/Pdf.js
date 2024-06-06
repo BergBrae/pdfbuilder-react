@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Document, Page, pdfjs } from 'react-pdf';
 import Accordion from 'react-bootstrap/Accordion';
 import { CiBookmark } from "react-icons/ci";
+import PdfViewer from './PdfViewer';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -11,7 +12,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   ).toString();
 
 const Pdf = (props) => {
-    const { index, pdf, bookmarks, eventKey } = props;
+    const { index, pdf, bookmarks } = props;
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [fileData, setFileData] = useState(null);
@@ -37,7 +38,7 @@ const Pdf = (props) => {
     );
 
     return (
-        <Accordion.Item eventKey={eventKey}>
+        <Accordion.Item eventKey={index}>
             <Accordion.Header>
                 <Container>
                     <Row>
@@ -49,45 +50,7 @@ const Pdf = (props) => {
                 </Container>
             </Accordion.Header>
             <Accordion.Body>
-                <Container>
-                    <Row>
-                        <Col>
-                            {fileData && (
-                                <Document
-                                    file={fileData}
-                                    onLoadSuccess={onDocumentLoadSuccess}
-                                >
-                                    {Array.from(
-                                        new Array(numPages),
-                                        (el, index) => (
-                                            <Page
-                                                key={`page_${index + 1}`}
-                                                pageNumber={index + 1}
-                                            />
-                                        )
-                                    )}
-                                </Document>
-                            )}
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Button
-                                onClick={() => setPageNumber((prevPageNumber) => Math.max(prevPageNumber - 1, 1))}
-                                disabled={pageNumber <= 1}
-                            >
-                                Previous
-                            </Button>
-                            <span> Page {pageNumber} of {numPages} </span>
-                            <Button
-                                onClick={() => setPageNumber((prevPageNumber) => Math.min(prevPageNumber + 1, numPages))}
-                                disabled={pageNumber >= numPages}
-                            >
-                                Next
-                            </Button>
-                        </Col>
-                    </Row>
-                </Container>
+                <PdfViewer fileData={fileData} numPages={numPages} onDocumentLoadSuccess={onDocumentLoadSuccess} />
             </Accordion.Body>
         </Accordion.Item>
     );
