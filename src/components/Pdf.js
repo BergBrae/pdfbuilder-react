@@ -42,9 +42,9 @@ const Pdf = (props) => {
             <Accordion.Header>
                 <Container>
                     <Row>
-                        <Col>{pdf.name}</Col>
-                        <Col>Last Modified: {pdf.lastModified ? new Date(pdf.lastModified).toLocaleDateString() : 'N/A'}</Col>
-                        <Col>Pages: {numPages}</Col>
+                        <Col sm={4}><h6>{pdf.name}</h6></Col>
+                        <Col>Last Modified: <strong>{pdf.lastModified ? new Date(pdf.lastModified).toLocaleDateString() : 'N/A'}</strong></Col>
+                        <Col>Pages: <strong>{numPages}</strong></Col>
                         <Col>{bookmarkElement}</Col>
                         <Col {...attributes} {...listeners} className="drag-handle">
                             <BsArrowsMove size={20} />
