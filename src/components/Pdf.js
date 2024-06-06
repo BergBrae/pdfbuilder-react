@@ -1,42 +1,90 @@
-import React from 'react';
-import { Container, Row, Col, Button, Alert } from 'react-bootstrap';
-// import { Document, Page } from 'react-pdf';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Document, Page, pdfjs } from 'react-pdf';
 import Accordion from 'react-bootstrap/Accordion';
 import { CiBookmark } from "react-icons/ci";
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Pdf = (props) => {
+    const { index, pdf, bookmarks, eventKey } = props;
+    const [numPages, setNumPages] = useState(null);
+    const [pageNumber, setPageNumber] = useState(1);
+    const [fileData, setFileData] = useState(null);
 
-    const text = props.text ? props.text : <Alert variant="danger">No content available for this file</Alert>; // default to an empty string if props.text is null or undefined
-    const showButton = props.text ? true : false;
+    useEffect(() => {
+        if (pdf) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setFileData(e.target.result);
+            };
+            reader.readAsDataURL(pdf);
+        }
+    }, [pdf]);
 
-    const bookmarkElement = props.bookmark ? <span><CiBookmark size={30} /> {props.bookmark}</span> : <span></span>;
+    const onDocumentLoadSuccess = ({ numPages }) => {
+        setNumPages(numPages);
+    };
+
+    const bookmarkElement = bookmarks[pdf.name] ? (
+        <span><CiBookmark size={30} /> {bookmarks[pdf.name]}</span>
+    ) : (
+        <span></span>
+    );
 
     return (
-        <Accordion.Item eventKey={props.eventKey}>
+        <Accordion.Item eventKey={eventKey}>
             <Accordion.Header>
                 <Container>
                     <Row>
-                        <Col md={7}>
-                            <h3 className="pdf-filename">{props.filename}</h3>
-                            <p className="pdf-directory">{props.directory}</p>
-                        </Col>
-                        <Col md={5}>
-                            {bookmarkElement}
-                        </Col>
+                        <Col>{pdf.name}</Col>
+                        <Col>Last Modified: {pdf.lastModified ? new Date(pdf.lastModified).toLocaleDateString() : 'N/A'}</Col>
+                        <Col>Pages: {numPages}</Col>
+                        <Col>{bookmarkElement}</Col>
                     </Row>
                 </Container>
             </Accordion.Header>
             <Accordion.Body>
-                <Row>
-                    <Col md={showButton ? 11 : 12}>
-                        {text && <p className='text-start'>{text}</p>}
-                    </Col>
-                    <Col md={1} className='d-flex align-items-center justify-content-center'>
-                        {showButton && <Button variant="primary" href={props.path} className="align-items-center">
-                            Open
-                        </Button>}
-                    </Col>
-                </Row>
+                <Container>
+                    <Row>
+                        <Col>
+                            {fileData && (
+                                <Document
+                                    file={fileData}
+                                    onLoadSuccess={onDocumentLoadSuccess}
+                                >
+                                    {Array.from(
+                                        new Array(numPages),
+                                        (el, index) => (
+                                            <Page
+                                                key={`page_${index + 1}`}
+                                                pageNumber={index + 1}
+                                            />
+                                        )
+                                    )}
+                                </Document>
+                            )}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Button
+                                onClick={() => setPageNumber((prevPageNumber) => Math.max(prevPageNumber - 1, 1))}
+                                disabled={pageNumber <= 1}
+                            >
+                                Previous
+                            </Button>
+                            <span> Page {pageNumber} of {numPages} </span>
+                            <Button
+                                onClick={() => setPageNumber((prevPageNumber) => Math.min(prevPageNumber + 1, numPages))}
+                                disabled={pageNumber >= numPages}
+                            >
+                                Next
+                            </Button>
+                        </Col>
+                    </Row>
+                </Container>
             </Accordion.Body>
         </Accordion.Item>
     );
