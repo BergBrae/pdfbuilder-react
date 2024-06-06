@@ -3,18 +3,18 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Document, Page, pdfjs } from 'react-pdf';
 import Accordion from 'react-bootstrap/Accordion';
 import { CiBookmark } from "react-icons/ci";
+import { BsArrowsMove } from 'react-icons/bs';
 import PdfViewer from './PdfViewer';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
     import.meta.url,
-  ).toString();
+).toString();
 
 const Pdf = (props) => {
-    const { index, pdf, bookmarks } = props;
+    const { index, pdf, bookmarks, attributes, listeners } = props;
     const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
     const [fileData, setFileData] = useState(null);
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const Pdf = (props) => {
     );
 
     return (
-        <Accordion.Item eventKey={index}>
+        <Accordion.Item eventKey={index} className='m-2'>
             <Accordion.Header>
                 <Container>
                     <Row>
@@ -46,6 +46,9 @@ const Pdf = (props) => {
                         <Col>Last Modified: {pdf.lastModified ? new Date(pdf.lastModified).toLocaleDateString() : 'N/A'}</Col>
                         <Col>Pages: {numPages}</Col>
                         <Col>{bookmarkElement}</Col>
+                        <Col {...attributes} {...listeners} className="drag-handle">
+                            <BsArrowsMove size={20} />
+                        </Col>
                     </Row>
                 </Container>
             </Accordion.Header>

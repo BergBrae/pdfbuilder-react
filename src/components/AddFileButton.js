@@ -4,7 +4,6 @@ import { DataContext } from './context';
 
 export default function Pdftools() {
     const [data, setData] = React.useContext(DataContext);
-    const files = data.pdfs.files;
     const fileInputRef = React.useRef(null);
 
     const handleFileChange = (e) => {

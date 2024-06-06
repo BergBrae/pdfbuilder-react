@@ -17,6 +17,7 @@ import {
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { BsArrowsMove } from 'react-icons/bs'; // Importing an icon for the drag handle
 
 export default function Pdfs() {
     const [data, setData] = useContext(DataContext);
@@ -88,8 +89,8 @@ function SortableItem(props) {
     };
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-            <Pdf {...props} />
+        <div ref={setNodeRef} style={style}>
+            <Pdf {...props} attributes={attributes} listeners={listeners} />
         </div>
     );
 }
