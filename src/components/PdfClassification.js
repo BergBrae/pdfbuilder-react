@@ -1,7 +1,6 @@
 import React from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import { TiDelete } from "react-icons/ti";
 import InformativeInput from "./InformativeInput";
 
@@ -51,7 +50,7 @@ export default function PdfClassification(props) {
                 <Col lg={1} className="text-align-center align-content-center">
                     <h4 className='m-2'>{props.index + 1}</h4>
                 </Col>
-                <Col lg={3} className="text-align-center align-content-center">
+                <Col lg={2} className="text-align-center align-content-center">
                     <InformativeInput 
                         placeholder="Classification Name" 
                         information={nameInformation} 
@@ -59,7 +58,7 @@ export default function PdfClassification(props) {
                         onChange={e => handleInputChange('name', e.target.value)}
                     />
                 </Col>
-                <Col lg={2} className="text-align-center align-content-center">
+                <Col lg={3} className="text-align-center align-content-center">
                     <InformativeInput 
                         placeholder="Text pattern" 
                         information={textPatternInformation} 
